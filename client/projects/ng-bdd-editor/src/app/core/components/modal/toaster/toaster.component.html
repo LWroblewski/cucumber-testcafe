@@ -1,0 +1,6 @@
+<div [ngClass]="'toast-container toast-' + config.type">
+  <div class="toast-icon">
+    <mat-icon>{{getToasterTypeIcon()}}</mat-icon>
+  </div>
+  <div class="toast-message">{{config.message}}</div>
+</div>

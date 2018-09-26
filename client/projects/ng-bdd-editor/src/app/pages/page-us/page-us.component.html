@@ -1,0 +1,60 @@
+<div class="detail-page">
+  <div class="menu-steps">
+    <app-steps-categories [categories]="stepsCategories$ | async"
+                          (stepSelected)="onStepAdded($event)"></app-steps-categories>
+  </div>
+  <div class="us-detail">
+    <form [formGroup]="formGroup">
+      <mat-form-field>
+        <input matInput placeholder="Titre de l'US" formControlName="title">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Catégorie" [matAutocomplete]="auto" formControlName="category">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let usCategory of usCategories$ | async" [value]="usCategory.title">
+            <span>{{ usCategory.title }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput placeholder="Description" matTextareaAutosize
+              formControlName="description"></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Lien Confluence" formControlName="link">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Conditions de réalisation" disabled [value]="strUsConditions">
+        <button matSuffix mat-icon-button (click)="addUsCondition()">
+          <mat-icon color="primary">add_circle_outline</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-nav-list>
+        <mat-list-item *ngFor="let usStep of usSteps; let indexStep = index" [disableRipple]="true"
+                       appDraggable (dragEnded)="onDragEnded($event)">
+          <a matLine>
+            {{ getStepLabel(usStep) }}
+          </a>
+          <button mat-icon-button (click)="editUSStep(usStep, indexStep)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="removeStep(usStep)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-nav-list>
+    </form>
+  </div>
+</div>
+<footer class="fixed-footer footer-buttons">
+  <button mat-raised-button (click)="resetUS()">Reset</button>
+  <button mat-raised-button color="primary" [disabled]="formGroup.invalid"
+          (click)="saveUS()">Valider l'US</button>
+</footer>
+

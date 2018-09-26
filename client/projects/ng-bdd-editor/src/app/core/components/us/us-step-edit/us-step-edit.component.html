@@ -1,0 +1,44 @@
+<div class="dialog-content">
+  <header>
+    <h2 class="mat-h2">Edition des propriétés</h2>
+  </header>
+  <section>
+    <form class="us-step-detail" [formGroup]="formGroup">
+      <mat-form-field>
+        <input matInput placeholder="Intitulé de l'action" disabled [value]="formattedUSStep">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Phrase sélectionnée" formControlName="step"
+                    (selectionChange)="onStepChange()">
+          <mat-option *ngFor="let step of (steps$ | async)" [value]="step">
+            {{ step.formattedSentence }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div *ngFor="let stepVar of step.variables; let indexVar = index;" class="step-var-value">
+        <h3 class="mat-h3">Descriptif de la variable n°{{indexVar + 1}}</h3>
+        <mat-checkbox [checked]="isInputValue(indexVar)"
+                      (change)="onChangeValueType($event, indexVar)">Insérer un texte libre</mat-checkbox>
+
+        <mat-form-field *ngIf="isInputValue(indexVar)">
+          <input matInput [placeholder]="getInputPlaceholder(indexVar)"
+                 [value]="getInputValue(indexVar)" (input)="onInputChange($event, indexVar)">
+        </mat-form-field>
+
+        <mat-form-field *ngIf="isInputValue(indexVar) === false">
+          <mat-select placeholder="Valeur paramétrable" (selectionChange)="onStepVarChange($event, indexVar)"
+                      [value]="getStepVarValue(indexVar)">
+            <mat-option *ngFor="let stepVar of (stepVars$ | async)" [value]="stepVar.key">
+              {{ stepVar.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+  </section>
+  <footer>
+    <button mat-raised-button color="primary" (click)="save()">Valider</button>
+  </footer>
+</div>

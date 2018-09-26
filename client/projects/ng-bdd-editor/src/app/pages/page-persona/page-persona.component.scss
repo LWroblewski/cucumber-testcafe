@@ -1,0 +1,17 @@
+:host {
+  form.persona-detail {
+    padding: 1rem;
+  }
+
+  div.persona-data {
+    display: flex;
+
+    div.step-var-list {
+      flex: 1;
+    }
+
+    app-persona-data-list {
+      flex: 1;
+    }
+  }
+}

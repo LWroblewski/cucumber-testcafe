@@ -1,0 +1,24 @@
+:host {
+  .detail-page {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 1rem 1rem 50px 1rem;
+
+    overflow: auto;
+
+    .menu-steps {
+      flex: 1;
+    }
+
+    .us-detail {
+      flex: 1;
+      form {
+        padding: 1rem;
+
+        ::ng-deep.mat-list-item-content {
+          padding: 0 !important;
+        }
+      }
+    }
+  }
+}

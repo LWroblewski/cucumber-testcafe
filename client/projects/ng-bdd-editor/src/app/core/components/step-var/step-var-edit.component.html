@@ -1,0 +1,19 @@
+<div class="step-var-edit-container">
+  <h3>{{config.stepVar.label}}</h3>
+  <div class="step-var-description">
+    {{config.stepVar.description}}
+  </div>
+  <mat-radio-group *ngIf="isStepVarList()" class="step-var-values-radio-group" [(ngModel)]="selectedValue">
+    <mat-radio-button class="step-var-value" *ngFor="let stepVarValue of config.stepVar.values"
+                      [value]="stepVarValue">
+      {{stepVarValue}}
+    </mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field *ngIf="isStepVarList() === false" class="step-var-value">
+    <input matInput placeholder="Valeur de la variable" [(ngModel)]="selectedValue">
+  </mat-form-field>
+  <div class="footer-buttons">
+    <button mat-raised-button color="primary" (click)="validate()"
+            [disabled]="hasNoSelectedValue()">Valider</button>
+  </div>
+</div>

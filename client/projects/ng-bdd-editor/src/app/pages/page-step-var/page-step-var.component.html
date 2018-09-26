@@ -1,0 +1,37 @@
+<form class="step-var-detail" [formGroup]="formGroup">
+  <mat-form-field>
+    <input matInput placeholder="Clé technique de la variable métier" formControlName="key">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Nom de la variable métier" formControlName="label">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Description" formControlName="description">
+  </mat-form-field>
+
+  <mat-nav-list>
+    <mat-list-item *ngFor="let value of values; trackBy: trackByFn;">
+      <input matInput placeholder="Libellé de la valeur" [value]="value"
+      (blur)="onValueBlur($event, indexValue)">
+      <button mat-icon-button (click)="deleteStepVarValue(value)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-nav-list>
+
+  <mat-form-field>
+    <input matInput placeholder="Ajouter une valeur :" [(ngModel)]="newStepVarValue"
+           [ngModelOptions]="{standalone: true}" class="form-field-add-value">
+    <button matSuffix mat-icon-button [disabled]="newStepVarValue === null" (click)="addStepVarValue()">
+      <mat-icon color="primary">add_circle_outline</mat-icon>
+    </button>
+  </mat-form-field>
+</form>
+
+<footer class="footer-buttons">
+  <button mat-raised-button (click)="resetStepVar()">Reset</button>
+  <button mat-raised-button color="primary" [disabled]="formGroup.invalid" (click)="saveStepVar()">Sauvegarder</button>
+</footer>

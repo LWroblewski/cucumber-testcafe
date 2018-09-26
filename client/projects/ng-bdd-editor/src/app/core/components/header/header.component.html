@@ -1,0 +1,49 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <a routerLink="/">Tests BDD</a>
+  <a *ngIf="currentProject" [routerLink]="['/project/', currentProject.key]" class="header-project">
+    {{currentProject.label}} {{getProjectVersion()}}
+  </a>
+  <span class="header-spacer"></span>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item
+            *ngIf="currentProject === null"
+            (click)="addProject()">
+      <mat-icon>note_add</mat-icon>
+      <span>Ajouter un projet</span>
+    </button>
+
+    <button mat-menu-item
+            *ngIf="currentProject"
+            (click)="generateFiles()">
+      <mat-icon>build</mat-icon>
+      <span>Générer les fichiers de tests</span>
+    </button>
+    <button mat-menu-item
+            *ngIf="currentProject"
+            (click)="generateJSON()">
+      <mat-icon>cloud_download</mat-icon>
+      <span>Extraire au format JSON</span>
+    </button>
+    <button mat-menu-item
+            *ngIf="currentProject"
+            [routerLink]="'/project/' + currentProject?.key + '/us'">
+      <mat-icon>note_add</mat-icon>
+      <span>Ajouter une US</span>
+    </button>
+    <button mat-menu-item
+            *ngIf="currentProject"
+            [routerLink]="'/project/' + currentProject?.key + '/persona'">
+      <mat-icon>person_add</mat-icon>
+      <span>Ajouter un Persona</span>
+    </button>
+    <button mat-menu-item
+            *ngIf="currentProject"
+            [routerLink]="'/project/' + currentProject?.key + '/step-var'">
+      <mat-icon>playlist_add</mat-icon>
+      <span>Ajouter une variable métier</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

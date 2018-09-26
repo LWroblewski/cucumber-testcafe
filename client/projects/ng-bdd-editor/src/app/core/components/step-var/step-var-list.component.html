@@ -1,0 +1,17 @@
+<div class="step-var-list-container">
+  <h3>Liste des variables métier:</h3>
+  <mat-selection-list>
+    <mat-list-option *ngFor="let stepVar of stepVars | sortStepVar"
+                     [selected]="getStepVarState(stepVar)"
+                     (selectionChange)="selectStepVar($event, stepVar)">
+      <a matLine>{{ stepVar.label }}</a>
+    </mat-list-option>
+  </mat-selection-list>
+  <div class="footer-buttons">
+    <button mat-raised-button (click)="selectOrUnselectAll()">
+      {{ getSelectAllLabel() }}
+    </button>
+    <button mat-raised-button color="primary" (click)="addStepVars()"
+    [disabled]="enableAddButton() === false">Ajouter</button>
+  </div>
+</div>

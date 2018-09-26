@@ -1,0 +1,19 @@
+<div class="persona-data-list">
+  <h3 *ngIf="title">{{title}}</h3>
+  <mat-nav-list>
+    <mat-list-item *ngFor="let data of personaData"
+                   [disableRipple]="true"
+                   appDraggable
+                   (dragEnded)="onDragEnded($event)">
+      <a matLine>{{ getPersonaDataLabel(data) }}</a>
+      <p mat-line> {{ data.value }} </p>
+      <button mat-icon-button (click)="editPersonaData(data)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="deletePersonaData(data)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-nav-list>
+</div>

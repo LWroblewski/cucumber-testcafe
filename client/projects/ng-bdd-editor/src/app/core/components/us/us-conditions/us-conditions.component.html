@@ -1,0 +1,21 @@
+<div class="dialog-content">
+  <header>
+    <h2 class="mat-h2">Conditions d'éxécution de l'US</h2>
+  </header>
+  <section>
+    <mat-form-field>
+      <mat-select placeholder="Ajouter une dépendance" (selectionChange)="onStepVarSelected($event)">
+        <mat-option *ngFor="let stepVar of filteredStepVars$ | async" [value]="stepVar">
+          <span>{{ stepVar.label }}</span>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <app-persona-data-list [stepVars]="stepVars$ | async"
+                           [personaData]="usConditions"
+                           (personaDataChanged)="onPersonaDataChanged($event)"></app-persona-data-list>
+  </section>
+  <footer class="footer-buttons">
+    <button mat-raised-button color="primary" (click)="onStepVarsAdded()">Valider</button>
+  </footer>
+</div>

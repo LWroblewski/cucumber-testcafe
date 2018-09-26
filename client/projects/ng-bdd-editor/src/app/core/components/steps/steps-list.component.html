@@ -1,0 +1,8 @@
+<mat-nav-list>
+  <mat-list-item *ngFor="let step of steps">
+    <a matLine>{{ step.formattedSentence }}</a>
+    <button mat-icon-button (click)="selectStep(step)">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-nav-list>

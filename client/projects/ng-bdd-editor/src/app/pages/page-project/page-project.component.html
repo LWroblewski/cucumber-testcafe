@@ -1,0 +1,60 @@
+<div class="home-page">
+  <div class="us-files">
+    <h2 class="mat-h2">Liste des US</h2>
+    <mat-accordion *ngIf="(usCategories$ | async) as usCategories">
+      <mat-expansion-panel *ngFor="let usCategory of usCategories">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{usCategory.title}}
+            {{usCategory._id}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-nav-list *ngIf="usCategory.children">
+          <mat-list-item *ngFor="let child of usCategory.children">
+            <a matLine>{{ child.title }}</a>
+            <button mat-icon-button (click)="deleteUS(child._id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button [routerLink]="['../us', child._id]">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div class="personas-files">
+    <h2 class="mat-h2">Liste des Personas</h2>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let personaFile of (personasFiles$ | async) as personasFiles">
+        <a matLine>{{ personaFile.name }}</a>
+        <button mat-icon-button (click)="deletePersona(personaFile._id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button [routerLink]="['../persona', personaFile._id]">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-nav-list>
+  </div>
+
+  <div class="step-vars">
+    <h2 class="mat-h2">Liste des Variables métier</h2>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let stepVar of (stepVars$ | async)">
+        <a matLine>{{ stepVar.label }}</a>
+        <button mat-icon-button (click)="deleteStepVar(stepVar._id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button [routerLink]="['../step-var', stepVar._id]">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-nav-list>
+  </div>
+</div>

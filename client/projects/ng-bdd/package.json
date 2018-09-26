@@ -1,0 +1,11 @@
+{
+  "name": "ng-bdd",
+  "version": "0.0.2",
+  "devDependencies": {
+    "cucumber": "4.2.1",
+    "cucumber-html-reporter": "4.0.4",
+    "testcafe": "^0.20.4",
+    "testcafe-angular-selectors": "^0.3.0",
+    "base64-img": "^1.0.4"
+  }
+}

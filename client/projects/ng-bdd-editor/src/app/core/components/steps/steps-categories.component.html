@@ -1,0 +1,19 @@
+<div class="steps-categories">
+
+  <mat-form-field>
+    <input matInput placeholder="Filtrer les phrases disponibles" [(ngModel)]="stepFilter">
+  </mat-form-field>
+
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let category of categories">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{category.category}}s
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <app-steps-list [steps]="filterSteps(category)" (stepSelected)="selectStep($event)"></app-steps-list>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

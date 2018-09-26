@@ -1,0 +1,27 @@
+<form class="persona-detail" [formGroup]="formGroup">
+  <mat-form-field>
+    <input matInput placeholder="Nom du Persona" formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Description du Persona" formControlName="description">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Lien Confluence" formControlName="link">
+  </mat-form-field>
+
+  <div class="persona-data" *ngIf="(stepVars$ | async) as stepVars">
+    <div class="step-var-list">
+      <app-step-var-list [stepVars]="stepVars"
+                         (stepVarSelected)="onStepVarSelected($event)"></app-step-var-list>
+    </div>
+    <app-persona-data-list [stepVars]="stepVars" [personaData]="personaData"
+                           title="Variables métier du Persona:"></app-persona-data-list>
+  </div>
+
+  <footer class="footer-buttons">
+    <button mat-raised-button (click)="resetPersona()">Reset</button>
+    <button mat-raised-button color="primary" [disabled]="formGroup.invalid" (click)="savePersona()">Valider le Persona</button>
+  </footer>
+</form>

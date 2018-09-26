@@ -1,0 +1,13 @@
+:host {
+  div.step-var-edit-container {
+
+    .step-var-values-radio-group {
+      display: inline-flex;
+      flex-direction: column;
+    }
+
+    .step-var-value {
+      margin: 1rem 0 1rem 0;
+    }
+  }
+}

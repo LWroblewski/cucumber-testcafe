@@ -1,0 +1,42 @@
+:host {
+  .toast-container {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    width: 30vw;
+    padding: 1rem;
+    color: #FFFFFF;
+
+    display: flex;
+    flex-direction: row;
+  }
+
+  div.toast-icon {
+    flex: 0.4;
+  }
+
+  div.toast-message {
+    flex: 1;
+  }
+
+  mat-icon {
+    font-size: 4rem;
+    color: white;
+  }
+
+  .toast-error {
+    background-color: #f44336;
+  }
+
+  .toast-info {
+    background-color: #265995;
+  }
+
+  .toast-success {
+    background-color: #58b957;
+  }
+
+  .toast-warning {
+    background-color: #f1ae43;
+  }
+}

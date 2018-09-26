@@ -1,0 +1,19 @@
+<div class="projects-container">
+  <h2>Liste des projets</h2>
+  <mat-nav-list>
+    <mat-list-item *ngFor="let project of projects$ | async">
+      <a matLine>{{ project.label }}</a>
+      <p mat-line> version {{ getProjectVersion(project) }} </p>
+      <button mat-icon-button (click)="duplicateProject(project)">
+        <mat-icon>share</mat-icon>
+      </button>
+      <button mat-icon-button (click)="deletProject(project)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button [routerLink]="['/project', project.key]">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-nav-list>
+</div>
