@@ -1,0 +1,10 @@
+{
+    "tests": {
+      "proxy": "",
+      "browsers": "firefox",
+      "screenshotsPath": "reports/screenshots/",
+      "concurrency": 1,
+      "testFile": "./projects/dist-bdd-launcher/lib/test.js"
+    }
+  }
+  

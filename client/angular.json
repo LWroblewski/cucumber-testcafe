@@ -3,25 +3,25 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-bdd-editor": {
-      "root": "projects/ng-bdd-editor",
-      "sourceRoot": "projects/ng-bdd-editor/src",
+    "bdd-editor": {
+      "root": "projects/bdd-editor",
+      "sourceRoot": "projects/bdd-editor/src",
       "projectType": "application",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../ng-bdd-dist/client",
-            "index": "projects/ng-bdd-editor/src/index.html",
-            "main": "projects/ng-bdd-editor/src/main.ts",
-            "tsConfig": "projects/ng-bdd-editor/src/tsconfig.app.json",
-            "polyfills": "projects/ng-bdd-editor/src/polyfills.ts",
+            "outputPath": "../bdd-dist/client",
+            "index": "projects/bdd-editor/src/index.html",
+            "main": "projects/bdd-editor/src/main.ts",
+            "tsConfig": "projects/bdd-editor/src/tsconfig.app.json",
+            "polyfills": "projects/bdd-editor/src/polyfills.ts",
             "assets": [
-              "projects/ng-bdd-editor/src/assets",
-              "projects/ng-bdd-editor/src/favicon.ico"
+              "projects/bdd-editor/src/assets",
+              "projects/bdd-editor/src/favicon.ico"
             ],
             "styles": [
-              "projects/ng-bdd-editor/src/styles.scss"
+              "projects/bdd-editor/src/styles.scss"
             ],
             "scripts": []
           },
@@ -29,8 +29,8 @@
             "dev": {
               "fileReplacements": [
                 {
-                  "replace": "projects/ng-bdd-editor/src/environments/environment.ts",
-                  "with": "projects/ng-bdd-editor/src/environments/environment.dev.ts"
+                  "replace": "projects/bdd-editor/src/environments/environment.ts",
+                  "with": "projects/bdd-editor/src/environments/environment.dev.ts"
                 }
               ]
             },
@@ -46,8 +46,8 @@
               "buildOptimizer": true,
               "fileReplacements": [
                 {
-                  "replace": "projects/ng-bdd-editor/src/environments/environment.ts",
-                  "with": "projects/ng-bdd-editor/src/environments/environment.prod.ts"
+                  "replace": "projects/bdd-editor/src/environments/environment.ts",
+                  "with": "projects/bdd-editor/src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -56,34 +56,34 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-bdd-editor:build"
+            "browserTarget": "bdd-editor:build"
           },
           "configurations": {
             "prod": {
-              "browserTarget": "ng-bdd-editor:build:prod"
+              "browserTarget": "bdd-editor:build:prod"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-bdd-editor:build"
+            "browserTarget": "bdd-editor:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ng-bdd-editor/src/test.ts",
+            "main": "projects/bdd-editor/src/test.ts",
             "karmaConfig": "./karma.conf.js",
-            "polyfills": "projects/ng-bdd-editor/src/polyfills.ts",
-            "tsConfig": "projects/ng-bdd-editor/src/tsconfig.spec.json",
+            "polyfills": "projects/bdd-editor/src/polyfills.ts",
+            "tsConfig": "projects/bdd-editor/src/tsconfig.spec.json",
             "scripts": [],
             "styles": [
-              "projects/ng-bdd-editor/src/styles.scss"
+              "projects/bdd-editor/src/styles.scss"
             ],
             "assets": [
-              "projects/ng-bdd-editor/src/assets",
-              "projects/ng-bdd-editor/src/favicon.ico"
+              "projects/bdd-editor/src/assets",
+              "projects/bdd-editor/src/favicon.ico"
             ]
           }
         },
@@ -91,8 +91,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ng-bdd-editor/src/tsconfig.app.json",
-              "projects/ng-bdd-editor/src/tsconfig.spec.json"
+              "projects/bdd-editor/src/tsconfig.app.json",
+              "projects/bdd-editor/src/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -101,38 +101,150 @@
         }
       }
     },
-    "ng-bdd": {
-      "root": "projects/ng-bdd",
-      "sourceRoot": "projects/ng-bdd/src",
+    "bdd-launcher": {
+      "root": "projects/bdd-launcher",
+      "sourceRoot": "projects/bdd-launcher/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/ng-bdd/tsconfig.lib.json",
-            "project": "projects/ng-bdd/ng-package.json"
+            "tsConfig": "projects/bdd-launcher/tsconfig.lib.json",
+            "project": "projects/bdd-launcher/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "projects/ng-bdd/ng-package.prod.json"
+              "project": "projects/bdd-launcher/ng-package.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ng-bdd/src/test.ts",
-            "tsConfig": "projects/ng-bdd/tsconfig.spec.json",
-            "karmaConfig": "projects/ng-bdd/karma.conf.js"
+            "main": "projects/bdd-launcher/src/test.ts",
+            "tsConfig": "projects/bdd-launcher/tsconfig.spec.json",
+            "karmaConfig": "projects/bdd-launcher/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ng-bdd/tsconfig.lib.json",
-              "projects/ng-bdd/tsconfig.spec.json"
+              "projects/bdd-launcher/tsconfig.lib.json",
+              "projects/bdd-launcher/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "bdd-demo": {
+      "root": "projects/bdd-demo",
+      "sourceRoot": "projects/bdd-demo/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "../bdd-dist/demo",
+            "index": "projects/bdd-demo/src/index.html",
+            "main": "projects/bdd-demo/src/main.ts",
+            "tsConfig": "projects/bdd-demo/src/tsconfig.app.json",
+            "polyfills": "projects/bdd-demo/src/polyfills.ts",
+            "assets": [
+              "projects/bdd-demo/src/assets",
+              "projects/bdd-demo/src/favicon.ico"
+            ],
+            "styles": [
+              "projects/bdd-demo/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/bdd-demo/src/environments/environment.ts",
+                  "with": "projects/bdd-demo/src/environments/environment.dev.ts"
+                }
+              ]
+            },
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/bdd-demo/src/environments/environment.ts",
+                  "with": "projects/bdd-demo/src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "mock": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/bdd-demo/src/environments/environment.ts",
+                  "with": "projects/bdd-demo/src/environments/environment.mock.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "bdd-demo:build"
+          },
+          "configurations": {
+            "dev": {
+              "browserTarget": "bdd-demo:build:dev"
+            },
+            "production": {
+              "browserTarget": "bdd-demo:build:production"
+            },
+            "mock": {
+              "browserTarget": "bdd-demo:build:mock"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bdd-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bdd-demo/src/test.ts",
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": "projects/bdd-demo/src/polyfills.ts",
+            "tsConfig": "projects/bdd-demo/src/tsconfig.spec.json",
+            "scripts": [],
+            "styles": [
+              "projects/bdd-demo/src/styles.scss"
+            ],
+            "assets": [
+              "projects/bdd-demo/src/assets",
+              "projects/bdd-demo/src/favicon.ico"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/bdd-demo/src/tsconfig.app.json",
+              "projects/bdd-demo/src/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -142,7 +254,7 @@
       }
     }
   },
-  "defaultProject": "ng-bdd-editor",
+  "defaultProject": "bdd-editor",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

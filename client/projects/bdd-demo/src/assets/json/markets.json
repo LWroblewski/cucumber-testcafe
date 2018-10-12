@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1",
+        "operator": {
+            "name": "Market1"
+        }
+    },
+    {
+        "id": "2",
+        "operator": {
+            "name": "Market2"
+        }
+    },
+    {
+        "id": "3",
+        "operator": {
+            "name": "Market3"
+        }
+    }
+]

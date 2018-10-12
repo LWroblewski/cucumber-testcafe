@@ -1,0 +1,12 @@
+<form class="user-login-form" [formGroup]="group">
+  <h1 class="title">Authentification</h1>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Login" formControlName="login">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Mot de passe" formControlName="password">
+  </mat-form-field>
+  <div class="user-login-form-footer">
+      <button mat-raised-button [disabled]="group.invalid" (click)="login()">Connexion</button>
+  </div>
+</form>

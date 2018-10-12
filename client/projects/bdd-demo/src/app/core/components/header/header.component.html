@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <span>BDD DEMO</span>
+  <span class="header-spacer"></span>
+  <button mat-icon-button (click)="openLoginDialog()" *ngIf="!(currentUser$ | async)">
+    <mat-icon aria-label="Connexion">person</mat-icon>
+  </button>
+  <span *ngIf="currentUser$ | async; let currentUser">
+    {{ currentUser?.login }}
+  </span>
+</mat-toolbar>

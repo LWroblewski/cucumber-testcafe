@@ -8,6 +8,7 @@ export enum STEPS {
   CLICK_BTN                 = 'Je clique sur le bouton "(.*?)"',
   CLICK_PRIMARY_BTN         = 'Je clique sur le bouton primaire',
   CLICK_SECONDARY_BTN       = 'Je clique sur le bouton secondaire',
+  CLICK_BTN_ICON            = 'Je clique sur le bouton Icône "(.*?)"',
 
   SET_INPUT_VALUE           = 'Je saisis la valeur "(.*?)" dans le champ de saisie "(.*?)"',
   SET_INPUT_VALUE_INDEX     = 'Je saisis la valeur "(.*?)" dans le champ de saisie n°(\d+)',
@@ -21,6 +22,7 @@ export enum STEPS {
 
   SHOULD_GO_TO_URL          = 'Je devrais naviguer sur la page d\'url "(.*?)"',
   SHOULD_GO_TO_PAGE         = 'Je devrais naviguer sur la page "(.*?)"',
+  SHOULD_GO_TO_MODAL        = 'Je devrais voir apparaître la modale "(.*?)"',
   SHOULD_INPUT_HAS_VALUE    = 'Le champ de saisie n°(\d+) devrait contenir la valeur "(.*?)"',
   SHOULD_MAIN_BTN_ENABLED   = 'Le bouton de validation principal devrait être (disabled|enabled)',
   SHOULD_SHOW_ERROR         = 'Je devrais voir cette erreur: "(.*?)"',

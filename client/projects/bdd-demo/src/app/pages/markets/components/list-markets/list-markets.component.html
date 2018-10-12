@@ -1,0 +1,30 @@
+<div>
+  <h1 class="title">Liste des marchés</h1>
+  <table mat-table [dataSource]="markets$ | async" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let market"> {{market.id}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="operatorName">
+      <th mat-header-cell *matHeaderCellDef> Opérateur </th>
+      <td mat-cell *matCellDef="let market"> {{market.operator?.name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let market">
+          <button mat-icon-button (click)="editMarket(market)">
+            <mat-icon aria-label="view">visibility</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteMarket(market)">
+            <mat-icon aria-label="delete">delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

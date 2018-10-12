@@ -1,14 +1,16 @@
 {
   "name": "ng-bdd-client",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "start": "ng serve ng-bdd-editor",
-    "build-prod": "ng build ng-bdd-editor --configuration=production",
-    "build:ng-bdd": "tsc -p ./projects/ng-bdd/tsconfig.lib.json && cp ./projects/ng-bdd/package.json ./projects/dist-ng-bdd && npm pack ./projects/dist-ng-bdd/",
+    "start:editor": "ng serve bdd-editor --port=4033",
+    "start:demo": "ng serve bdd-demo --configuration=mock",
+    "build:bdd-editor": "ng build bdd-editor --configuration=production",
+    "build:bdd-launcher": "tsc -p ./projects/bdd-launcher/tsconfig.lib.json && cp ./projects/bdd-launcher/package.json ./projects/dist-bdd-launcher && npm pack ./projects/bdd-launcher/",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e:demo": "./node_modules/.bin/cucumber-js ./projects/bdd-demo-e2e/**/*.feature --require ./projects/dist-bdd-launcher/lib/support/**/*.js --require ./projects/dist-bdd-launcher/lib/step_definitions/**/*.js --format json:./projects/bdd-demo-e2e/reports/report.json",
+    "report-e2e:demo": "node ./projects/dist-bdd-launcher/lib/report/report.js --jsonFile ./projects/bdd-demo-e2e/reports/report.json --output ./projects/bdd-demo-e2e/reports/report.html"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +25,10 @@
     "@angular/platform-browser": "6.0.7",
     "@angular/platform-browser-dynamic": "6.0.7",
     "@angular/router": "6.0.7",
+    "@ngxs/devtools-plugin": "^3.2.0",
+    "@ngxs/logger-plugin": "^3.1.4-dev.master-b50211a",
+    "@ngxs/router-plugin": "^3.2.0",
+    "@ngxs/store": "^3.1.4-dev.master-b50211a",
     "core-js": "^2.4.1",
     "file-saver": "^1.3.8",
     "base64-img": "^1.0.4",
